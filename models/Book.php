@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $title
  * @property string $year
- * @property int $id_autor
+ * @property int $id_author
  * @property int $id_publishing
  *
  * @property Authors $autor
@@ -34,13 +34,13 @@ class Book extends \yii\db\ActiveRecord
                 [['title'], 'required'],
                 [['title'], 'string'],
                 [['year'], 'safe'],
-                [['id_autor', 'id_publishing'], 'integer'],
+                [['id_author', 'id_publishing'], 'integer'],
                 [
-                        ['id_autor'],
+                        ['id_author'],
                         'exist',
                         'skipOnError' => true,
                         'targetClass' => Authors::className(),
-                        'targetAttribute' => ['id_autor' => 'id']
+                        'targetAttribute' => ['id_author' => 'id']
                 ],
         ];
     }
@@ -54,7 +54,7 @@ class Book extends \yii\db\ActiveRecord
                 'id' => 'ID',
                 'title' => 'Title',
                 'year' => 'Year',
-                'id_autor' => 'Id Autor',
+                'id_author' => 'Id Author',
                 'id_publishing' => 'Id Publishing',
         ];
     }
@@ -64,6 +64,6 @@ class Book extends \yii\db\ActiveRecord
      */
     public function getAutor()
     {
-        return $this->hasOne(Authors::className(), ['id' => 'id_autor']);
+        return $this->hasOne(Authors::className(), ['id' => 'id_author']);
     }
 }

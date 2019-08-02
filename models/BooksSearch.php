@@ -4,10 +4,10 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Books;
+use app\models\Book;
 
 /**
- * BooksSearch represents the model behind the search form of `app\models\Books`.
+ * BooksSearch represents the model behind the search form of `app\models\Book`.
  */
 class BooksSearch extends Book
 {
@@ -17,7 +17,7 @@ class BooksSearch extends Book
     public function rules()
     {
         return [
-                [['id', 'id_autor', 'id_publishing'], 'integer'],
+                [['id', 'id_author', 'id_publishing'], 'integer'],
                 [['title', 'year'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class BooksSearch extends Book
         $query->andFilterWhere([
                 'id' => $this->id,
                 'year' => $this->year,
-                'id_autor' => $this->id_autor,
+                'id_author' => $this->id_author,
                 'id_publishing' => $this->id_publishing,
         ]);
 

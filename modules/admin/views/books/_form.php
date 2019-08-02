@@ -27,7 +27,7 @@ $items = ArrayHelper::map($authors, 'id', 'name');
     ]);
     ?>
 
-    <?= $form->field($model, 'id_autor')->dropDownList($items, $params); ?>
+    <?= $form->field($model, 'id_author')->dropDownList($items, $params); ?>
 
     <?= $form->field($model, 'id_publishing')->textInput() ?>
 

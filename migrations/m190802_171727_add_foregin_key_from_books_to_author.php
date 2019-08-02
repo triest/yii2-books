@@ -16,12 +16,12 @@ class m190802_171727_add_foregin_key_from_books_to_author extends Migration
 
         // add foreign key for table `city`
         $this->addForeignKey(
-                'fk-book-id_autor',
+                'fk-book-id_author',
                 'books',
-                'id_autor',
+                'id_author',
                 'authors',
                 'id',
-                'SET NULL'
+                'CASCADE'
         );
 
     }

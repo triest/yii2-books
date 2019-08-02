@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'id',
                     'title:ntext',
                     'year',
-                    'id_autor',
+                    'id_author',
                     'id_publishing',
 
                     ['class' => 'yii\grid\ActionColumn'],

@@ -13,7 +13,7 @@ use Yii;
  * @property string $year_of_birth
  * @property string $country
  *
- * @property Books[] $books
+ * @property Book[] $books
  */
 class Authors extends \yii\db\ActiveRecord
 {
@@ -56,6 +56,6 @@ class Authors extends \yii\db\ActiveRecord
      */
     public function getBooks()
     {
-        return $this->hasMany(Books::className(), ['id_autor' => 'id']);
+        return $this->hasMany(Book::className(), ['id_autor' => 'id']);
     }
 }

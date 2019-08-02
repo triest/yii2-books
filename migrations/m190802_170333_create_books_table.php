@@ -16,14 +16,14 @@ class m190802_170333_create_books_table extends Migration
                 'id' => $this->primaryKey(),
                 'title' => $this->text()->notNull(),
                 'year' => $this->date()->null(),
-                'id_autor' => $this->integer(),
+                'id_author' => $this->integer(),
                 'id_publishing' => $this->integer(),
         ]);
 
         $this->createIndex(
                 'idx-book-id_author',
                 'books',
-                'id_autor'
+                'id_author'
         );
     }
 

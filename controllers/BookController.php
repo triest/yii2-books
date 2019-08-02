@@ -9,14 +9,12 @@ namespace app\controllers;
 
 use yii\console\Controller;
 use yii\console\ExitCode;
+use yii\rest\ActiveController;
 
 
-class BookController extends Controller
+class BookController extends ActiveController
 {
+    public $modelClass = 'app\models\Book';
 
-    public function actionIndex()
-    {
-        echo "test";
-        return ExitCode::OK;
-    }
+   
 }

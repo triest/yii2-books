@@ -2,9 +2,11 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Authors;
 use Yii;
-use app\models\Books;
+use app\models\Book;
 use app\models\BooksSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -64,14 +66,14 @@ class BooksController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Books();
+        $model = new Book();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
-                'model' => $model,
+                'model' => $model
         ]);
     }
 
@@ -113,12 +115,12 @@ class BooksController extends Controller
      * Finds the Books model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Books the loaded model
+     * @return Book the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Books::findOne($id)) !== null) {
+        if (($model = Book::findOne($id)) !== null) {
             return $model;
         }
 

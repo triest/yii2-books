@@ -66,4 +66,9 @@ class Book extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Authors::className(), ['id' => 'id_author']);
     }
+
+    public function saveBook()
+    {
+        return true;
+    }
 }

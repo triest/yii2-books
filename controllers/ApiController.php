@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Author;
 use app\models\Book;
 use Yii;
 use yii\db\ActiveRecord;
@@ -57,9 +58,15 @@ class ApiController extends Controller
 
     public function actionDelete($id)
     {
+        //   return $id;
         Yii::$app->controller->enableCsrfValidation = false;
         $this->enableCsrfValidation = false;//
-        return $id;
+        $author = Author::find()->where(['id' => $id])->one();
+        if ($author == null) {
+            return 405;
+        }
+        $author->delete();
+        return 204;
     }
 
     public function actionCreate()

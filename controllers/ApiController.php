@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\models\Book;
 use Yii;
+use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
+use yii\rest\ActiveController;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -23,37 +25,38 @@ class ApiController extends Controller
                                 'view' => ['GET'],
                                 'create' => ['GET', 'POST'],
                                 'update' => ['GET', 'PUT', 'POST'],
-                                'delete' => ['POST', 'DELETE'],
+                                'delete' => ['DELETE'],
                         ],
                 ],
         ];
     }
 
-    public function beforeAction($action)
-    {
-        $this->enableCsrfValidation = false;
-        return parent::beforeAction($action);
-    }
-
-
     public function actionIndex()
     {
         //  $id = Yii::$app->request->getQueryParam("id"); //
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $book = Book::find()->all();
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+        if ($id == null) {
+            return null;
+        }
+        $book = Book::find()->where(['id_author' => $id])->all();
         return $book;
-        // return "ok";
     }
 
-
-    public function actionGet()
+    public function actionView($id)
     {
-        // $id = Yii::$app->request->getQueryParam("id"); //
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return "get";
-        //  return $this->render('index');
+        $request = Yii::$app->request;
+        $author = $request->get('author');
+        $book = Book::find()->where(['id_author' => $id])->all();
+        return $book;
     }
 
+    public function actionDelete($id)
+    {
+        return "delete";
+    }
 
     public function actionCreate()
     {
@@ -66,21 +69,21 @@ class ApiController extends Controller
             $model->year = $request->post("year");
             $model->id_author = $request->post("id_author");
             $model->id_publishing = $request->post("id_publishing");
-            if ($model->save(false)) {
+            if ($model->save()) {
                 return 201;
             } else {
                 return 503;
             }
-            /*  if ($model->load($request->post())) {
-                  return "post";
-              } else {
-                  return "not load";
-              }*/
         }
 
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return "create";
+        return 405;
         //  return $this->render('index');
+    }
+
+    public function actionUpdate()
+    {
+        return "update";
     }
 
 

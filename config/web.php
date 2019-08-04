@@ -49,21 +49,15 @@ $config = [
 
                 'urlManager' => [
                         'enablePrettyUrl' => true,
+                        'enableStrictParsing' => false,
                         'showScriptName' => false,
                         'rules' => [
                                 ['class' => 'yii\rest\UrlRule', 'controller' => 'book'],
                                 ['class' => 'yii\rest\UrlRule', 'controller' => 'author'],
                                 [
                                         'class' => 'yii\rest\UrlRule',
-                                        'controller' => ['ApiController'],
-                                        'patterns' => [
-                                                'PUT,PATCH api/{id}/update' => 'update',
-                                                'DELETE api/{id}/delete' => 'delete',
-                                                'GET,HEAD api/{id}' => 'get',
-                                                'GET,HEAD' => 'api/index',
-                                                '{id}' => 'options',
-                                                'POST ' => 'create'
-                                        ]
+                                        'controller' => ['api'],
+
                                 ],
                         ],
                 ],

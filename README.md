@@ -2,8 +2,8 @@
 
 **REAT API**
 
-Запросы:
-
+Запросы:<br>
+**КНИГИ:**  <br>
 Получение всех книг:
 GET: http://host/api
 
@@ -28,7 +28,7 @@ POST параметры: <br>
 title, year, id_author,id_puhlisher 
 <br>
 
-
+**АВТОРЫ:** <br>
 Создание автора: <br>
 GET: http://host/authors <br>
 GET: http://host/authors/:id <br>

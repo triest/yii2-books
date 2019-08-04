@@ -27,7 +27,6 @@ POST: http://host/api/create
 POST параметры: <br>
 title, year, id_author,id_puhlisher 
 <br>
-Ошибки:
 
 
 Создание автора: <br>

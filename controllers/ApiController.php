@@ -67,6 +67,14 @@ class ApiController extends Controller
         if ($request->isPost) { /* текущий запрос является POST запросом */
             $model->title = $request->post("title");
             $model->year = $request->post("year");
+
+            $author_id = $request->getQueryParam('id_author');
+            if ($author_id != null) {
+                $author = Author::find()->where(['id' => $author_id])->one();
+                if ($author == null) {
+                    return 405;
+                }
+            }
             $model->id_author = $request->post("id_author");
             $model->id_publishing = $request->post("id_publishing");
             if ($model->save()) {

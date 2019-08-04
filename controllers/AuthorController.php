@@ -14,6 +14,7 @@
 
 namespace app\controllers;
 
+use app\models\Author;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\rest\ActiveController;
@@ -21,17 +22,45 @@ use yii\rest\ActiveController;
 
 class AuthorController extends ActiveController
 {
-    public $modelClass = 'app\models\Authors';
+    public $modelClass = 'app\models\Author';
+
     /*
-        protected function verbs()
-        {
-            return [
-                    'index' => ['GET', 'HEAD'],
-                    'view' => ['GET', 'HEAD'],
-                    'create' => ['POST'],
-                    'update' => ['PUT', 'PATCH'],
-                    'delete' => ['DELETE'],
-            ];
-        }
+            public function behaviors()
+            {
+                return [
+                        'verbs' => [
+                                'class' => \yii\filters\VerbFilter::className(),
+                                'actions' => [
+                                        'index' => ['GET'],
+                                        'view' => ['GET'],
+                                        'create' => ['GET', 'POST'],
+                                        'update' => ['GET', 'PUT', 'POST'],
+                                        'delete' => ['DELETE'],
+                                ],
+                        ],
+                ];
+            }
     */
+    /*     public function actionUpdate($id)
+         {
+             return $id;
+             $request = Yii::$app->request;
+             if ($request->isPut) {
+                 $item = Author::find()->where(['id' => $id])->one();
+                 if ($item == null) {
+                     return 404;
+                 }
+                 $name = $request->getQueryParam('name');
+
+                 $author = Author::find()->where(['id' => $id])->one();
+                 if ($author == null) {
+                     return 405;
+                 }
+                 $author->name = $name;
+                 $author->save(false);
+                 return 204;
+             }
+             return 503;
+         }
+ */
 }

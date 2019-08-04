@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Authors;
+use app\models\Author;
 
 /**
  * AuthorsSearch represents the model behind the search form of `app\models\Authors`.
  */
-class AuthorsSearch extends Authors
+class AuthorsSearch extends Author
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class AuthorsSearch extends Authors
      */
     public function search($params)
     {
-        $query = Authors::find();
+        $query = Author::find();
 
         // add conditions that should always apply here
 

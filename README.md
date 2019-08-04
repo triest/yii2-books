@@ -5,18 +5,44 @@
 Запросы:
 
 Получение всех книг:
-GET: http://books/api
+GET: http://host/api
 
 Получение всех книг по ip автора:
-GET: http://books/apis/:id
+GET: http://host/apis/:id
 
 Удаление автора и связанных с ним книг:
-DELETE:  http://books/apis/:id
+DELETE:  http://host/apis/:id
 
-Обновление автора книги:
-PUT http://books/apis/:book_id?id_author=:author_id
+Обновление автора книги:<br>
+PUT: http://host/apis/:book_id?id_author=:author_id
+<br>
+POST параметры: <br> 
+title, year, id_author,id_puhlisher 
 
 
+Создание книги: <br>
+POST: http://host/api/create
+<br>
+POST параметры: <br>
+title, year, id_author,id_puhlisher 
+<br>
+Ошибки:
+
+
+Создание автора: <br>
+GET: http://host/authors <br>
+GET: http://host/authors/:id <br>
+POST: http://host/author/create <br>
+DELETE: http://host/authors/:id <br> 
+PUT: http://books/authors/:id <br>
+POST параметры: <br> 
+family,name,year_of_birth,country
+
+Поля:  
+family (requared)
+name
+year_of_birth (date)
+country
 
 <br><br>
 <p align="center">

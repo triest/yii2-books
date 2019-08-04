@@ -13,7 +13,7 @@ use Yii;
  * @property int $id_author
  * @property int $id_publishing
  *
- * @property Authors $autor
+ * @property Author $autor
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -39,7 +39,7 @@ class Book extends \yii\db\ActiveRecord
                         ['id_author'],
                         'exist',
                         'skipOnError' => true,
-                        'targetClass' => Authors::className(),
+                        'targetClass' => Author::className(),
                         'targetAttribute' => ['id_author' => 'id']
                 ],
         ];

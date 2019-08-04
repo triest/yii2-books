@@ -37,10 +37,12 @@ class ApiController extends Controller
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $request = Yii::$app->request;
         $id = $request->get('id');
-        if ($id == null) {
-            return null;
-        }
-        $book = Book::find()->where(['id_author' => $id])->all();
+        /*  if ($id == null) {
+              return null;
+          }*/
+
+        //  $book = Book::find()->where(['id_author' => $id])->all();
+        $book = Book::find()->all();
         return $book;
     }
 
@@ -55,11 +57,14 @@ class ApiController extends Controller
 
     public function actionDelete($id)
     {
-        return "delete";
+        Yii::$app->controller->enableCsrfValidation = false;
+        $this->enableCsrfValidation = false;//
+        return $id;
     }
 
     public function actionCreate()
     {
+        Yii::$app->controller->enableCsrfValidation = false;
         $this->enableCsrfValidation = false;//
         // $id = Yii::$app->request->getQueryParam("id"); //
         $model = new  Book();

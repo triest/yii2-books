@@ -34,15 +34,7 @@ class ApiController extends Controller
 
     public function actionIndex()
     {
-        //  $id = Yii::$app->request->getQueryParam("id"); //
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $request = Yii::$app->request;
-        $id = $request->get('id');
-        /*  if ($id == null) {
-              return null;
-          }*/
-
-        //  $book = Book::find()->where(['id_author' => $id])->all();
         $book = Book::find()->all();
         return $book;
     }
@@ -50,15 +42,12 @@ class ApiController extends Controller
     public function actionView($id)
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $request = Yii::$app->request;
-        $author = $request->get('author');
         $book = Book::find()->where(['id_author' => $id])->all();
         return $book;
     }
 
     public function actionDelete($id)
     {
-        //   return $id;
         Yii::$app->controller->enableCsrfValidation = false;
         $this->enableCsrfValidation = false;//
         $author = Author::find()->where(['id' => $id])->one();
@@ -73,7 +62,6 @@ class ApiController extends Controller
     {
         Yii::$app->controller->enableCsrfValidation = false;
         $this->enableCsrfValidation = false;//
-        // $id = Yii::$app->request->getQueryParam("id"); //
         $model = new  Book();
         $request = Yii::$app->request;
         if ($request->isPost) { /* текущий запрос является POST запросом */
@@ -87,15 +75,31 @@ class ApiController extends Controller
                 return 503;
             }
         }
-
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return 405;
-        //  return $this->render('index');
     }
 
-    public function actionUpdate()
+    public function actionUpdate($id)
     {
-        return "update";
+        $request = Yii::$app->request;
+        if ($request->isPut) {
+            $book = Book::find()->where(['id' => $id])->one();
+            if ($book == null) {
+                return 404;
+            }
+            $author_id = $request->getQueryParam('id_author');
+            if ($author_id == null) {
+                return 503;
+            }
+            $author = Author::find()->where(['id' => $author_id])->one();
+            if ($author == null) {
+                return 405;
+            }
+            $book->id_author = $author->id;
+            $book->save(false);
+            return 204;
+        }
+        return 503;
     }
 
 

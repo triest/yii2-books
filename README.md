@@ -1,3 +1,24 @@
+
+
+**REAT API**
+
+Запросы:
+
+Получение всех книг:
+GET: http://books/api
+
+Получение всех книг по ip автора:
+GET: http://books/apis/:id
+
+Удаление автора и связанных с ним книг:
+DELETE:  http://books/apis/:id
+
+Обновление автора книги:
+PUT http://books/apis/:book_id?id_author=:author_id
+
+
+
+<br><br>
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">

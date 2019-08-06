@@ -35,7 +35,7 @@ GET: http://host/authors/:id <br>
 DELETE: http://host/authors/:id <br> 
 PUT: http://books/authors/:id <br>
 POST параметры: <br> 
-family,name,year_of_birth,country
+family,name,year_of_birth,country <br>
 POST: http://host/author/create <br>
 POST параметры: <br> 
 family,name,year_of_birth,country
